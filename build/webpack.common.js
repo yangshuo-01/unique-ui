@@ -43,7 +43,23 @@ module.exports = {
             // vue组件文件
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                use:{
+                    loader: 'vue-loader',
+                    options: {
+                      compilerOptions: {
+                        preserveWhitespace: false
+                      }
+                    }
+                },
+            },
+            // md文件
+            {
+                test: /\.md$/,
+                use: ['vue-loader',
+                    {
+                        loader: path.resolve(__dirname,'./md/index.js')
+                    }
+                ]
             }
         ]
     },
