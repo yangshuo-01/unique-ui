@@ -8,7 +8,7 @@ module.exports = function (source,...args) {
     // 正则[\s\S]*匹配所有字符（包括换行符）
     content = content.replace(/<!--code([\s\S]*)code-->/g,(match,$1)=>{
         let commonjs,template,comp
-        // 将注释code中间的内容转换成.vue模板字符串
+        // 抽离html和script
         template = compilerTemplate($1)
         // vue-loader转换模板字符串成为commonjs模块
         commonjs = compilerVue(template)
